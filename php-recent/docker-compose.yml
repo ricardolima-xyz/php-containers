@@ -24,11 +24,28 @@ services:
         - "9906:3306"
     networks:
         - default
+  pgsql:
+    container_name: pgsql
+    image: postgres:latest
+    restart: always
+    environment:
+        POSTGRES_PASSWORD: XXX
+        POSTGRES_USER: root
+        POSTGRES_DB: eve
+#    ports:
+#        - "9906:3306"
+    networks:
+        - default
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
     ports:
-        - '8080:80'
+        - '8000:80'
     restart: always
     environment:
         PMA_HOST: db
