@@ -3,12 +3,13 @@ FROM php:8.1-apache
 
 # Updating sources
 RUN apt-get -y update
+RUN apt-get install -y wget
 
 # Enabling Apache RewriteEngine
 RUN a2enmod rewrite
 
 # Installing PHP Modules
-RUN docker-php-ext-install calendar mysqli pdo pdo_mysql 
+RUN docker-php-ext-install calendar mysqli pdo pdo_mysql
 
 # Installing intl module
 RUN apt-get install -y libicu-dev \
